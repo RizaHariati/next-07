@@ -8,10 +8,17 @@ const DATA_SOURCE_URL = "https://jsonplaceholder.typicode.com/todos";
 //   return data;
 // }
 
-export async function GET() {
+export async function GET(request: Request) {
+  const origin = request.headers.get("origin");
+
+  // console.log({ origin });
   const res = await fetch(DATA_SOURCE_URL);
   const data = await res.json();
-  return NextResponse.json(data);
+  return NextResponse.json(data, {
+    headers: {
+      "Access-Control-Allow-Origin": origin || "*",
+    },
+  });
 }
 
 export async function DELETE(request: Request) {
