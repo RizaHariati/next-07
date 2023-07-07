@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 const allowedOrigins =
   process.env.NODE_ENV === "production"
     ? ["http://yoursite.com", "https://yoursite.com"]
-    : "https://www.google.com" || "http://localhost:3000";
+    : ["https://www.google.com", "http://localhost:3000"];
 
 export function middleware(request: Request) {
   const origin = request.headers.get("origin") || "http://localhost:3000";

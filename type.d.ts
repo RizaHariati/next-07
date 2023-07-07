@@ -4,3 +4,8 @@ type Todo = {
   title: string;
   completed: boolean;
 };
+type BlogPost = {
+  id: string;
+  title: string;
+  date: string;
+};
